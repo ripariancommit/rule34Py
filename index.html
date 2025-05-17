@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>rule34Py &mdash; rule34Py 2.1.0 documentation</title>
+  <title>rule34py &mdash; rule34Py 2.1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -41,13 +41,12 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/index.html">User Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev/index.html">Developer Documentation</a></li>
 </ul>
 
         </div>
@@ -64,7 +63,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">rule34Py</li>
+      <li class="breadcrumb-item active">rule34py</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -74,27 +73,81 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="rule34py">
-<h1>rule34Py<a class="headerlink" href="#rule34py" title="Link to this heading"></a></h1>
-<p>Welcome to the rule34Py module documentation!</p>
+  <div align="center"><section id="rule34py">
+<h1>rule34py<a class="headerlink" href="#rule34py" title="Link to this heading"></a></h1>
+<a class="reference external image-reference" href="https://img.shields.io/github/license/b3yc0d3/rule34Py"><img alt="GPL-3.0" src="https://img.shields.io/github/license/b3yc0d3/rule34Py" />
+</a>
+<a class="reference external image-reference" href="https://pypi.org/project/rule34Py/"><img alt="" src="https://img.shields.io/pypi/v/rule34Py" />
+</a>
+<a class="reference external image-reference" href="https://pypi.org/project/rule34Py/"><img alt="" src="https://img.shields.io/pypi/dm/rule34py?color=blue" />
+</a>
+<p>Python API wrapper for <a class="reference external" href="https://rule34.xxx/">rule34.xxx</a>.</p>
+</div><section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://pypi.org/project/rule34Py/">rule34Py</a> is available directly from the Python Package Index and can be installed via <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>rule34Py
+</pre></div>
+</div>
+<p>Or you can build it from source using this project.
+See the <a class="reference external" href="https://b3yc0d3.github.io/rule34Py/dev/developer-guide.html">Developer Guide</a> for more information.</p>
+</section>
+<section id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rule34Py</span><span class="w"> </span><span class="kn">import</span> <span class="n">rule34Py</span>
+<span class="n">r34Py</span> <span class="o">=</span> <span class="n">rule34Py</span><span class="p">()</span>
+
+<span class="c1"># Get comments of an post.</span>
+<span class="n">r34Py</span><span class="o">.</span><span class="n">get_comments</span><span class="p">(</span><span class="mi">4153825</span><span class="p">)</span>
+
+<span class="c1"># Get post by its id.</span>
+<span class="n">r34Py</span><span class="o">.</span><span class="n">get_post</span><span class="p">(</span><span class="mi">4153825</span><span class="p">)</span>
+
+<span class="c1"># Get top 100 icame.</span>
+<span class="n">r34Py</span><span class="o">.</span><span class="n">icame</span><span class="p">()</span>
+
+<span class="c1"># Search for posts by tag(s).</span>
+<span class="n">r34Py</span><span class="o">.</span><span class="n">search</span><span class="p">([</span><span class="s2">&quot;neko&quot;</span><span class="p">],</span> <span class="n">page_id</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># Get pool by id.</span>
+<span class="n">r34Py</span><span class="o">.</span><span class="n">get_pool</span><span class="p">(</span><span class="mi">28</span><span class="p">)</span>
+
+<span class="c1"># Get a random post.</span>
+<span class="n">random</span> <span class="o">=</span> <span class="n">r34Py</span><span class="o">.</span><span class="n">random_post</span><span class="p">()</span>
+
+<span class="c1"># Get just a random post ID.</span>
+<span class="n">random_id</span> <span class="o">=</span> <span class="n">r34Py</span><span class="o">.</span><span class="n">random_post_id</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
+<p>This project has extensive <a class="reference external" href="(https://b3yc0d3.github.io/rule34Py/">documentation</a>, hosted on the upstream Github Pages. It includes additional <strong>Tutorials</strong>, <strong>User Guides</strong>, <strong>API Documentation</strong>, and more.</p>
+<p>See the <a class="reference external" href="https://b3yc0d3.github.io/rule34Py/dev/contributing.html">Contributing Guide</a> for information about how to contribute to this project and file bugs.</p>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<p class="caption" role="heading"><span class="caption-text">Sections</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/downloader.html">A Simple Rule34 Post Downloader</a></li>
 </ul>
 </li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/rule34Py/__init__.html">rule34Py</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="guides/index.html">User Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guides/captcha-clearance.html">How to clear Rule34 captcha defenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev/index.html">Developer Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev/developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/contributing.html">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/license.html">LICENSE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev/license.html#notice">NOTICE</a></li>
+</ul>
+</li>
 </ul>
 </div>
+</section>
 </section>
 
 
