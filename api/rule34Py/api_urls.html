@@ -42,7 +42,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Sections:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="__init__.html">rule34Py</a><ul class="current">
@@ -61,7 +65,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
 </ul>
 
         </div>
@@ -92,56 +95,65 @@
              
   <section id="module-rule34Py.api_urls">
 <span id="rule34py-api-urls"></span><h1>rule34Py.api_urls<a class="headerlink" href="#module-rule34Py.api_urls" title="Link to this heading"></a></h1>
+<p>A module containing URL templates for the rule34.xxx websites.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="rule34Py.api_urls.API_URLS">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rule34Py.api_urls.</span></span><span class="sig-name descname"><span class="pre">API_URLS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rule34Py.api_urls.API_URLS" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
-<p>Api Urls</p>
+<dd><p>rule34.xxx API endpoint URLs.</p>
 <p>Internal class used to change easily urls, if they should ever change.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rule34Py.api_urls.API_URLS.COMMENTS">
 <span class="sig-name descname"><span class="pre">COMMENTS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://api.rule34.xxx/index.php?page=dapi&amp;s=comment&amp;q=index&amp;post_id={POST_ID}'</span></em><a class="headerlink" href="#rule34Py.api_urls.API_URLS.COMMENTS" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The XML Post comments endpoint.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rule34Py.api_urls.API_URLS.GET_POST">
 <span class="sig-name descname"><span class="pre">GET_POST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://api.rule34.xxx/index.php?page=dapi&amp;s=post&amp;q=index&amp;id={POST_ID}&amp;json=1'</span></em><a class="headerlink" href="#rule34Py.api_urls.API_URLS.GET_POST" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The JSON Post endpoint.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rule34Py.api_urls.API_URLS.ICAME">
 <span class="sig-name descname"><span class="pre">ICAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://rule34.xxx/index.php?page=icame'</span></em><a class="headerlink" href="#rule34Py.api_urls.API_URLS.ICAME" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The HTML ICAME page URL.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rule34Py.api_urls.API_URLS.POOL">
 <span class="sig-name descname"><span class="pre">POOL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://rule34.xxx/index.php?page=pool&amp;s=show&amp;id={POOL_ID}'</span></em><a class="headerlink" href="#rule34Py.api_urls.API_URLS.POOL" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>An HTML Pool URL.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rule34Py.api_urls.API_URLS.RANDOM_POST">
 <span class="sig-name descname"><span class="pre">RANDOM_POST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://rule34.xxx/index.php?page=post&amp;s=random'</span></em><a class="headerlink" href="#rule34Py.api_urls.API_URLS.RANDOM_POST" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The HTML Random post URL.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rule34Py.api_urls.API_URLS.SEARCH">
 <span class="sig-name descname"><span class="pre">SEARCH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://api.rule34.xxx/index.php?page=dapi&amp;s=post&amp;q=index&amp;limit={LIMIT}&amp;tags={TAGS}&amp;json=1'</span></em><a class="headerlink" href="#rule34Py.api_urls.API_URLS.SEARCH" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The JSON search endpoint.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rule34Py.api_urls.API_URLS.TOPMAP">
 <span class="sig-name descname"><span class="pre">TOPMAP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://rule34.xxx/index.php?page=toptags'</span></em><a class="headerlink" href="#rule34Py.api_urls.API_URLS.TOPMAP" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>The HTML toptags URL.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rule34Py.api_urls.API_URLS.USER_FAVORITES">
 <span class="sig-name descname"><span class="pre">USER_FAVORITES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://api.rule34.xxx/index.php?page=favorites&amp;s=view&amp;id={USR_ID}'</span></em><a class="headerlink" href="#rule34Py.api_urls.API_URLS.USER_FAVORITES" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>An HTML User favorites endpoint.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rule34Py.api_urls.API_URLS.USER_PAGE">
 <span class="sig-name descname"><span class="pre">USER_PAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://api.rule34.xxx/index.php?page=account&amp;s=profile&amp;id={USER_ID}'</span></em><a class="headerlink" href="#rule34Py.api_urls.API_URLS.USER_PAGE" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>An HTML User profile URL.</p>
+</dd></dl>
 
 </dd></dl>
 
