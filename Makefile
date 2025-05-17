@@ -40,6 +40,7 @@ check :
 clean : mostlyclean
 	find ./ -depth -path '**/.pytest_cache*' -print -delete
 	find ./ -depth -path '**/__pycache__*' -print -delete
+	$(RUFF) clean
 .PHONY : clean
 
 
