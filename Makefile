@@ -27,7 +27,7 @@ htmldir ?= $(docdir)/html
 # PHONY TARGETS #
 #################
 
-all : html
+all :
 	$(PYTHON3) -m build --wheel --outdir $(builddir) --verbose
 .PHONY : all
 
