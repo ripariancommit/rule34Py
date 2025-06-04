@@ -1,4 +1,4 @@
-
+"""pytest functions for the rule34Py.html module."""
 import pytest
 
 from rule34Py.api_urls import API_URLS
@@ -47,13 +47,13 @@ def toptags_html(rule34):
 # TESTS #
 #########
 
-def test_ICamePage_init(icame_html):
+def test__ICamePage__init(icame_html):
     """The ICamePage class can be instantiated from html."""
     icame_page = ICamePage(icame_html)
     assert len(icame_page.top_chart) == ICAME_CHART_LEN
 
 
-def test_ICamePage_top_chart_from_html(icame_html):
+def test__ICamePage__top_chart_from_html(icame_html):
     """ICamePage.top_chart_from_html() parses the icame chart from html."""
     top_chart = ICamePage.top_chart_from_html(icame_html)
     assert isinstance(top_chart, list)
@@ -111,13 +111,13 @@ def test__PoolPage__pool_from_html(rule34):
     assert len(pool.posts) == 0
 
 
-def test_TagMapPage_init(tagmap_html):
+def test__TagMapPage__init(tagmap_html):
     """The TagMapPage class can be instantiated on its own."""
     tagmap = TagMapPage(tagmap_html)
     assert len(tagmap.map_points.keys()) == TAGMAP_LOCATION_COUNT
 
 
-def test_TagMapPage_map_points_from_html(tagmap_html):
+def test__TagMapPage__map_points_from_html(tagmap_html):
     """TagMapPage.map_points_from_html() parses tagmap data from html."""
     map_points = TagMapPage.map_points_from_html(tagmap_html)
     from pprint import pprint
@@ -126,13 +126,13 @@ def test_TagMapPage_map_points_from_html(tagmap_html):
     assert len(map_points.keys()) == TAGMAP_LOCATION_COUNT
 
 
-def test_TopTagsPage(toptags_html):
+def test__TopTagsPage(toptags_html):
     """The TopTagsPage class can be instantiated from html."""
     page = TopTagsPage(toptags_html)
     assert len(page.top_tags) == TOP_TAGS_CHART_LEN
 
 
-def test_TopTagsPage_top_tags_from_html(toptags_html):
+def test__TopTagsPage__top_tags_from_html(toptags_html):
     """TopTagsPage.top_tags_from_html() parses the icame chart from html."""
     top_tags = TopTagsPage.top_tags_from_html(toptags_html)
     assert isinstance(top_tags, list)

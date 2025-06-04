@@ -15,7 +15,7 @@ from rule34Py.__vars__ import __version__ as R34_VERSION
 TEST_POOL_ID = 28  # An arbitrary, very-old pool, that is probably stable.
 
 
-def test_rule34Py_get_comments(rule34):
+def test__rule34Py__get_comments(rule34):
     """The get_comments() method should fetch a list of comments from a post.
     """
     # TEST_POST_ID is the oldest post from search `neko rating:safe` with multiple comments.
@@ -26,7 +26,7 @@ def test_rule34Py_get_comments(rule34):
     assert isinstance(comments[0], PostComment)
 
 
-def test_rule34Py_get_pool(rule34):
+def test__rule34Py__get_pool(rule34):
     """The client can get a post pool object."""
     TEST_NUM_POSTS = 14  # there are 14 posts in this pool
     FIRST_POST_ID = 952001
@@ -38,16 +38,16 @@ def test_rule34Py_get_pool(rule34):
     assert pool.posts[0] == FIRST_POST_ID
 
 
-def test_rule34Py_get_post(rule34):
-    """The client get_post() method fetches a single Post.
-    """
-    TEST_POST_ID = 3471384
-    post = rule34.get_post(TEST_POST_ID)
+def test__rule34Py__get_post(rule34):
+    """The client get_post() method fetches a single Post by post ID."""
+    post = rule34.get_post(8973658)
     assert isinstance(post, Post)
-    assert post.id == TEST_POST_ID
+    assert post.id == 8973658
+    # Post #2 does not exist.
+    assert rule34.get_post(2) is None
 
 
-def test_rule34Py_icame(rule34):
+def test__rule34Py__icame(rule34):
     """The client icame() method fetches the icame leaderboard as a list.
     """
     icame = rule34.icame()
@@ -56,7 +56,7 @@ def test_rule34Py_icame(rule34):
     assert isinstance(icame[0], ICame)
 
 
-def test_rule34Py_iter_search(rule34):
+def test__rule34Py__iter_search(rule34):
     """The iter_search() method will iterate over post search results.
     """
     # The method returns an iterator.
@@ -81,31 +81,7 @@ def test_rule34Py_iter_search(rule34):
     assert len(results) == 1002
 
 
-def test__rule34Py__user_agent(rule34):
-    """The client has a user agent attribute that can be user-defined."""
-    # Default should be something like "Mozilla/... rule34Py/1.2.3"
-    print(rule34.user_agent)
-    assert "Mozilla" in rule34.user_agent
-    assert "rule34Py" in rule34.user_agent
-    assert R34_VERSION in rule34.user_agent
-    
-    # The user_agent can be changed.
-    rule34.user_agent = "foobar"
-    resp = rule34._get("http://example.com")
-    print(resp.request.headers)
-    assert resp.request.headers["User-Agent"] == "foobar"
-
-
-def test_rule34Py_get_post(rule34):
-    """The client get_post() method fetches a single Post by post ID."""
-    post = rule34.get_post(8973658)
-    assert isinstance(post, Post)
-    assert post.id == 8973658
-    # Post #2 does not exist.
-    assert rule34.get_post(2) is None
-
-
-def test_rule34Py_random_post(rule34):
+def test__rule34Py__random_post(rule34):
     """The client random_post() method fetches a random Post object.
     """
     post = rule34.random_post()
@@ -113,7 +89,7 @@ def test_rule34Py_random_post(rule34):
     assert isinstance(post, Post)
 
 
-def test_rule34Py_random_post_id(rule34):
+def test__rule34Py__random_post_id(rule34):
     """The client random_post_id() method fetches a random Post ID number."""
     id = rule34.random_post_id()
     print(f"id={id}")
@@ -157,7 +133,7 @@ def test__rule34Py__request_limiter(rule34):
     assert session_time <= 5
 
 
-def test_rule34Py_search(rule34):
+def test__rule34Py__search(rule34):
     """The client can search for posts by tags, with pagination."""
     # search by single tag
     results1 = rule34.search(["neko"])
@@ -189,7 +165,7 @@ def test_rule34Py_search(rule34):
         rule34.search([], limit=SEARCH_RESULT_MAX + 1)
 
 
-def test_rule34Py_tag_map(rule34):
+def test__rule34Py__tag_map(rule34):
     """The client tag_map() method should return a map of tags.
     """
     tag_map = rule34.tag_map()
@@ -201,7 +177,7 @@ def test_rule34Py_tag_map(rule34):
         break  # just check the first tag_map point
 
 
-def test_rule34Py_tagmap(rule34):
+def test__rule34Py__tagmap(rule34):
     """The old tagmap() method should throw a deprecation warning, but return the top_tags() method."""
     with pytest.warns(DeprecationWarning) as warnings:
         top_tags = rule34.tagmap()
@@ -212,7 +188,7 @@ def test_rule34Py_tagmap(rule34):
     assert isinstance(top_tags[0], TopTag)
 
 
-def test_rule34Py_top_tags(rule34):
+def test__rule34Py__top_tags(rule34):
     """The top_tags() method returns a list of the top 100 global tags.
     """
     top_tags = rule34.top_tags()
@@ -221,9 +197,24 @@ def test_rule34Py_top_tags(rule34):
     assert isinstance(top_tags[0], TopTag)
 
 
-def test_rule34Py_version(rule34):
+def test__rule34Py__user_agent(rule34):
+    """The client has a user agent attribute that can be user-defined."""
+    # Default should be something like "Mozilla/... rule34Py/1.2.3"
+    print(rule34.user_agent)
+    assert "Mozilla" in rule34.user_agent
+    assert "rule34Py" in rule34.user_agent
+    assert R34_VERSION in rule34.user_agent
+
+    # The user_agent can be changed.
+    rule34.user_agent = "foobar"
+    resp = rule34._get("http://example.com")
+    print(resp.request.headers)
+    assert resp.request.headers["User-Agent"] == "foobar"
+
+
+def test__rule34Py__version(rule34):
     """The version() property should throw a deprecation warning, but return its original value.
-    
+
     Remove this test when the method is removed.
     """
     with pytest.warns(
