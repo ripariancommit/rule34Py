@@ -1,4 +1,8 @@
-"""pytest functions for the rule34Py.html module."""
+"""Pytest functions for the rule34Py.html module.
+
+Generally speaking, all test functions in this module call into the interactive website.
+So they should all be marked with ``pytest.mark.captcha``.
+"""
 import pytest
 
 from rule34Py.api_urls import API_URLS
@@ -47,12 +51,14 @@ def toptags_html(rule34):
 # TESTS #
 #########
 
+@pytest.mark.captcha
 def test__ICamePage__init(icame_html):
     """The ICamePage class can be instantiated from html."""
     icame_page = ICamePage(icame_html)
     assert len(icame_page.top_chart) == ICAME_CHART_LEN
 
 
+@pytest.mark.captcha
 def test__ICamePage__top_chart_from_html(icame_html):
     """ICamePage.top_chart_from_html() parses the icame chart from html."""
     top_chart = ICamePage.top_chart_from_html(icame_html)
@@ -61,6 +67,7 @@ def test__ICamePage__top_chart_from_html(icame_html):
     assert isinstance(top_chart[0], ICame)
 
 
+@pytest.mark.captcha
 def test__PoolHistoryPage__events_from_html(rule34):
     """The events_from_html() method parses history page html for its events."""
     def get_pool_history_html(pool_id, pagination_index=0):
@@ -83,6 +90,7 @@ def test__PoolHistoryPage__events_from_html(rule34):
     assert dates1 == dates2
 
 
+@pytest.mark.captcha
 def test__PoolPage__pool_from_html(rule34):
     """The pool_from_html() method generates a Pool object from a page."""
     def get_pool_html(pool_id):
@@ -111,12 +119,14 @@ def test__PoolPage__pool_from_html(rule34):
     assert len(pool.posts) == 0
 
 
+@pytest.mark.captcha
 def test__TagMapPage__init(tagmap_html):
     """The TagMapPage class can be instantiated on its own."""
     tagmap = TagMapPage(tagmap_html)
     assert len(tagmap.map_points.keys()) == TAGMAP_LOCATION_COUNT
 
 
+@pytest.mark.captcha
 def test__TagMapPage__map_points_from_html(tagmap_html):
     """TagMapPage.map_points_from_html() parses tagmap data from html."""
     map_points = TagMapPage.map_points_from_html(tagmap_html)
@@ -126,12 +136,14 @@ def test__TagMapPage__map_points_from_html(tagmap_html):
     assert len(map_points.keys()) == TAGMAP_LOCATION_COUNT
 
 
+@pytest.mark.captcha
 def test__TopTagsPage(toptags_html):
     """The TopTagsPage class can be instantiated from html."""
     page = TopTagsPage(toptags_html)
     assert len(page.top_tags) == TOP_TAGS_CHART_LEN
 
 
+@pytest.mark.captcha
 def test__TopTagsPage__top_tags_from_html(toptags_html):
     """TopTagsPage.top_tags_from_html() parses the icame chart from html."""
     top_tags = TopTagsPage.top_tags_from_html(toptags_html)

@@ -47,6 +47,20 @@ class Mock34():
         self.requests_mock.reset()
 
 
+def str_to_bool(string: str) -> bool:
+    """Interpret a string as a boolean value.
+
+    Returns:
+        True, if the string value is any integer > 0 or the string literal \"true\" (with any capitalization; False otherwise.)
+    """
+    try:
+        return bool(int(string))
+    except ValueError:
+        pass
+
+    string = string.lower()
+    return string == "true"
+
 
 @pytest.fixture(scope="session", autouse=True)
 def mock34():
@@ -55,8 +69,16 @@ def mock34():
     This fixture provides a passive context which intercepts 'requests' module HTTP requests and either (a) responds with recorded http content from the real rule34.xxx or (b) proxies the request to the real site and stores the response for later use.
     
     Which behavior is followed is controlled by the value in the OS's `R34_RECORD_RESPONSES` variable. If python would evaluate that variable as True, then requests are proxied and recorded; otherwise they are replayed.
+
+    If the ``R34_MOCK`` environment variable is set to "False" (or 0), this fixture will disable itself, allowing requests to proceed to the public API unmolested.
     """
-    record_responses = bool(os.environ.get("R34_RECORD_RESPONSES", 0))
+    record_responses = str_to_bool(os.environ.get("R34_RECORD_RESPONSES", "False"))
+    enable_mock = str_to_bool(os.environ.get("R34_MOCK", "True"))
+
+    if not enable_mock:
+        yield None
+        return
+
     mock_service = Mock34(record_responses)
     mock_service.start()
     with mock_service.requests_mock as request_mock:

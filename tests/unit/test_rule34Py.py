@@ -26,6 +26,7 @@ def test__rule34Py__get_comments(rule34):
     assert isinstance(comments[0], PostComment)
 
 
+@pytest.mark.captcha
 def test__rule34Py__get_pool(rule34):
     """The client can get a post pool object."""
     TEST_NUM_POSTS = 14  # there are 14 posts in this pool
@@ -47,6 +48,7 @@ def test__rule34Py__get_post(rule34):
     assert rule34.get_post(2) is None
 
 
+@pytest.mark.captcha
 def test__rule34Py__icame(rule34):
     """The client icame() method fetches the icame leaderboard as a list.
     """
@@ -81,6 +83,7 @@ def test__rule34Py__iter_search(rule34):
     assert len(results) == 1002
 
 
+@pytest.mark.captcha
 def test__rule34Py__random_post(rule34):
     """The client random_post() method fetches a random Post object.
     """
@@ -89,6 +92,7 @@ def test__rule34Py__random_post(rule34):
     assert isinstance(post, Post)
 
 
+@pytest.mark.captcha
 def test__rule34Py__random_post_id(rule34):
     """The client random_post_id() method fetches a random Post ID number."""
     id = rule34.random_post_id()
@@ -97,6 +101,7 @@ def test__rule34Py__random_post_id(rule34):
     assert id > 0
 
 
+@pytest.mark.captcha
 def test__rule34Py__request_limiter(rule34):
     """The client has a configurable adapter for the base site that limits requests to some reasonable rate."""
     from time import time
@@ -165,6 +170,7 @@ def test__rule34Py__search(rule34):
         rule34.search([], limit=SEARCH_RESULT_MAX + 1)
 
 
+@pytest.mark.captcha
 def test__rule34Py__tag_map(rule34):
     """The client tag_map() method should return a map of tags.
     """
@@ -177,6 +183,7 @@ def test__rule34Py__tag_map(rule34):
         break  # just check the first tag_map point
 
 
+@pytest.mark.captcha
 def test__rule34Py__tagmap(rule34):
     """The old tagmap() method should throw a deprecation warning, but return the top_tags() method."""
     with pytest.warns(DeprecationWarning) as warnings:
@@ -188,6 +195,7 @@ def test__rule34Py__tagmap(rule34):
     assert isinstance(top_tags[0], TopTag)
 
 
+@pytest.mark.captcha
 def test__rule34Py__top_tags(rule34):
     """The top_tags() method returns a list of the top 100 global tags.
     """

@@ -31,6 +31,7 @@ else:
     logger.debug("Registry file does not exist.")
 
 logger.info("Regenerating registry file by running all tests.")
+os.environ["R34_MOCK"] == "True"
 os.environ["R34_RECORD_RESPONSES"] = "True"
 pytest.main(["."])
 

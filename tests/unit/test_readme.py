@@ -2,6 +2,8 @@
 """
 import inspect
 
+import pytest
+
 import rule34Py
 from rule34Py.icame import ICame
 from rule34Py.post import Post
@@ -21,6 +23,7 @@ def test__get_comments(rule34):
     assert isinstance(comments[0], PostComment)  # should be PostComments
 
 
+@pytest.mark.captcha
 def test__get_pool(rule34):
     """The client can get the example pool by id."""
     pool = rule34.get_pool(EXAMPLE_POOL)
@@ -37,6 +40,7 @@ def test__get_post(rule34):
     assert isinstance(post, Post)  # should be a post
 
 
+@pytest.mark.captcha
 def test__icame(rule34):
     """The client can get the top 100 icame."""
     icames = rule34.icame()

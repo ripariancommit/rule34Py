@@ -1,10 +1,7 @@
-import pytest
-
-from rule34Py import rule34Py
-from tests.fixtures import mock34
+from tests.fixtures import mock34, rule34
 
 
-@pytest.fixture(scope="module")
-def rule34(mock34):
-    r34 = rule34Py()
-    yield r34
+def pytest_configure(config):
+    config.addinivalue_line(
+        "markers", "captcha: marks tests as calling into a captcha-protected endpoint."
+    )
