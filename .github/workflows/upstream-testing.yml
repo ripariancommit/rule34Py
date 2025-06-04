@@ -1,0 +1,30 @@
+name: Upstream Testing
+# This pipeline periodically tests the project against the upstream (rule34.xxx) server.
+# It's purpose is to detect breaking changes to the upstream API.
+
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+  workflow_dispatch:
+
+jobs:
+  check-upstream-api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: Build the project
+        uses: ./.github/actions/build-project
+        with:
+          python-version: '3.x'
+
+      - name: Run Unit Tests
+        shell: bash
+        run: |
+          export R34_MOCK=False
+          python -m pip install .[test]
+          python -m pytest -v tests/unit -m 'not captcha'
