@@ -3,12 +3,9 @@ name: Upstream Testing
 # It's purpose is to detect breaking changes to the upstream API.
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 0 * * 0"
-  workflow_dispatch:
-  push:
-    branches:
-      - dev/tests
 
 jobs:
   check-upstream-api:
