@@ -12,6 +12,7 @@ on:
 
 jobs:
   check-upstream-api:
+    name: Test Upstream
     runs-on: ubuntu-latest
 
     steps:
@@ -28,6 +29,5 @@ jobs:
       - name: Run Unit Tests
         shell: bash
         run: |
-          export R34_MOCK=False
           python -m pip install .[test]
-          python -m pytest -v tests/unit -m 'not captcha'
+          R34_MOCK=False python -m pytest -v tests/unit -m 'not captcha'
