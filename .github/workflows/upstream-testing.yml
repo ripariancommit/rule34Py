@@ -7,6 +7,11 @@ on:
   schedule:
     - cron: "0 0 * * 0"
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   check-upstream-api:
     name: Test Upstream
