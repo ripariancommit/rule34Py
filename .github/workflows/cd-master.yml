@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - master
+      - dev/master-test
 
 permissions:
   contents: write
@@ -35,7 +36,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: ./build
-          pattern: build.*.Linux-py3.9
+          pattern: build.*.Linux-py3.x
           merge-multiple: true
 
       - name: Deploy to Github Pages
